@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brigazzi — Brigadeiros Gourmet Artesanais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="shortcut icon" href="img/logo da Brigazzi.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <a href="#inicio" class="nav-logo">
+            <img src="img/logo da Brigazzi.jpeg" alt="Brigazzi"
+                style="height:48px;width:auto;border-radius:8px;object-fit:contain;">
+            <span class="nav-logo-text">BRIGAZZI</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#diferenciais">Diferenciais</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button id="closeMenuBtn" aria-label="Fechar menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#inicio" onclick="closeMobile()">Início</a>
+        <a href="#sobre" onclick="closeMobile()">Sobre</a>
+        <a href="#produtos" onclick="closeMobile()">Produtos</a>
+        <a href="#diferenciais" onclick="closeMobile()">Diferenciais</a>
+        <a href="#galeria" onclick="closeMobile()">Galeria</a>
+        <a href="#depoimentos" onclick="closeMobile()">Depoimentos</a>
+        <a href="#contato" onclick="closeMobile()">Contato</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-ornament">B</div>
+        <div class="hero-content">
+            <div class="hero-badge">Confeitaria Artesanal Premium</div>
+            <h1>Brigazzi —<br><em>O verdadeiro sabor</em><br>do brigadeiro gourmet.</h1>
+            <p class="hero-sub">Feitos à mão com ingredientes selecionados, nossos brigadeiros transformam cada momento
+                em uma experiência inesquecível de sabor e sofisticação.</p>
+            <div class="hero-cta">
+                <a href="#produtos" class="btn-primary">
+                    <span>Conheça nossos sabores</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="pedido.html" class="btn-secondary">
+                    <i class="fas fa-play"></i>
+                    Fazer Pedido
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-visual-ring">
+                <img src="img/beijinho-brigadeiro.png" alt="Brigadeiros" style="
+                    width: 85%;
+                    height: 85%;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                ">
+                <div class="hero-float-badge b1">
+                    <div class="badge-icon choco">
+                        <img src="img/brigadeiro solo.jpeg" alt="Brigadeiro"
+                            style="width:100%;height:100%;object-fit:cover;border-radius:8px">
+                    </div>
+                    <div>
+                        <div style="font-size:11px;color:var(--text-light);letter-spacing:1px;text-transform:uppercase">
+                            Mais vendido</div>
+                        <div style="font-weight:600">Brigadeiro de Chocolate</div>
+                    </div>
+                </div>
+                <div class="hero-float-badge b2">
+                    <div class="badge-icon rose"><img src="img/beijinho-solo.png" alt="Beijinho"
+                            style="width:100%;height:100%;object-fit:cover;border-radius:8px"></div>
+                    <div>
+                        <div style="font-size:11px;color:var(--text-light);letter-spacing:1px;text-transform:uppercase">
+                            Novidade</div>
+                        <div style="font-weight:600">Beijinho Gourmet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            Rolar
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="sobre" id="sobre">
+        <div class="sobre-inner">
+            <div class="sobre-content reveal-left">
+                <div class="section-label">Nossa História</div>
+                <h2 class="section-title">Uma paixão que<br>virou <em>arte</em></h2>
+                <p class="sobre-text">A <strong>Brigazzi</strong> nasceu do amor incondicional pela confeitaria
+                    artesanal. Fundada com a missão de resgatar o sabor genuíno do brigadeiro brasileiro — porém elevado
+                    ao mais alto padrão gourmet — nossa confeitaria se dedica a cada detalhe, do ingrediente ao
+                    acabamento.</p>
+                <p class="sobre-text">Trabalhamos com <strong>chocolate belga de primeira linha</strong>, leite
+                    condensado artesanal e ingredientes naturais selecionados a dedo. Cada peça é produzida em pequenos
+                    lotes, garantindo frescor, textura perfeita e aquele sabor que só o cuidado artesanal proporciona.
+                </p>
+                <div class="sobre-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">100%</span>
+                        <div class="stat-label">Artesanal</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">2</span>
+                        <div class="stat-label">Sabores únicos</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">★ 5</span>
+                        <div class="stat-label">Avaliação</div>
+                    </div>
+                </div>
+            </div>
+            <div class="sobre-visual reveal-right">
+                <div class="sobre-card-big">
+                    <div class="icon-lg"><img src="img/fundadores da brigazzi.png" alt="Fundadores da Brigazzi"></div>
+                    <p class="sobre-quote-author">— Fundadores da Brigazzi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section class="produtos" id="produtos">
+        <div class="section-header reveal">
+            <div class="section-label">Nosso Cardápio</div>
+            <h2 class="section-title">Sabores que <em>encantam</em></h2>
+            <div class="divider"></div>
+            <p class="section-sub">Cada brigadeiro é uma experiência sensorial única, produzido com ingredientes premium
+                e receitas exclusivas.</p>
+        </div>
+        <div class="produtos-grid">
+            <div class="produto-card reveal">
+                <div class="produto-img choco-bg" style="position:relative;padding:0;overflow:hidden">
+                    <img src="img/brigadeiro trio.jpg" alt="Brigadeiro Trio"
+                        style="width:100%;height:100%;object-fit:cover;display:block">
+                    <div class="produto-tag" style="
+            position:absolute;
+            top:16px;right:16px;
+            background:rgba(0,0,0,0.55);
+            backdrop-filter:blur(8px);
+            color:white;
+            font-size:10px;letter-spacing:2px;text-transform:uppercase;
+            padding:6px 14px;border-radius:20px;font-weight:600;
+            z-index:10;
+        ">Clássico Premium</div>
+                </div>
+                <div class="produto-body">
+                    <h3 class="produto-nome">Brigadeiro de Chocolate</h3>
+                    <p class="produto-desc">Nossa receita original, feita com chocolate belga 70% cacau, leite
+                        condensado artesanal e finalizado com granulado crocante importado. Uma explosão de sabor em
+                        cada mordida.</p>
+                    <div class="produto-footer">
+                        <div class="produto-preco">
+                            <span class="preco-label">A partir de</span>
+                            <span class="preco-valor">R$ 6,00 <span class="preco-unit">/ unidade</span></span>
+                        </div>
+                        <a href="pedido.html" style="text-decoration: none;" class="produto-btn">
+                            Pedir
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="produto-card reveal" style="transition-delay:0.15s">
+                <div class="produto-img rose-bg" style="position:relative;padding:0;overflow:hidden">
+                    <img src="img/beijinho trio.jpg" alt="Beijinho Trio"
+                        style="width:100%;height:100%;object-fit:cover;display:block">
+                    <div class="produto-tag" style="
+            position:absolute;
+            top:16px;right:16px;
+            background:rgba(0,0,0,0.55);
+            backdrop-filter:blur(8px);
+            color:white;
+            font-size:10px;letter-spacing:2px;text-transform:uppercase;
+            padding:6px 14px;border-radius:20px;font-weight:600;
+            z-index:10;
+        ">Edição Especial</div>
+                </div>
+                <div class="produto-body">
+                    <h3 class="produto-nome">Beijinho Gourmet</h3>
+                    <p class="produto-desc">A versão premium do clássico beijinho, preparada com leite de coco
+                        selecionado, coco fresco ralado e um toque de baunilha natural. Coberto com flocos crocantes de
+                        coco.</p>
+                    <div class="produto-footer">
+                        <div class="produto-preco">
+                            <span class="preco-label">A partir de</span>
+                            <span class="preco-valor">R$ 6,00 <span class="preco-unit">/ unidade</span></span>
+                        </div>
+                        <a href="pedido.html" style="text-decoration: none;" class="produto-btn">
+                            Pedir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section class="diferenciais" id="diferenciais">
+        <div class="section-header reveal">
+            <div class="section-label">Por que Brigazzi?</div>
+            <h2 class="section-title">Nossos <em>diferenciais</em></h2>
+            <div class="divider"></div>
+            <p class="section-sub">O que nos torna únicos no mercado de confeitaria gourmet.</p>
+        </div>
+        <div class="diferenciais-grid">
+            <div class="diferencial-card reveal">
+                <div class="diferencial-icon">🌿</div>
+                <h3 class="diferencial-titulo">Ingredientes Selecionados</h3>
+                <p class="diferencial-desc">Trabalhamos exclusivamente com ingredientes premium, importados e nacionais
+                    de altíssima qualidade. Sem conservantes, sem atalhos.</p>
+            </div>
+            <div class="diferencial-card reveal" style="transition-delay:0.1s">
+                <div class="diferencial-icon">🤲</div>
+                <h3 class="diferencial-titulo">Produção Artesanal</h3>
+                <p class="diferencial-desc">Cada unidade é produzida manualmente, em pequenos lotes, garantindo atenção
+                    total aos detalhes e consistência perfeita em cada peça.</p>
+            </div>
+            <div class="diferencial-card reveal" style="transition-delay:0.2s">
+                <div class="diferencial-icon">👑</div>
+                <h3 class="diferencial-titulo">Sabor Premium</h3>
+                <p class="diferencial-desc">Nossas receitas são desenvolvidas para oferecer uma experiência gustativa
+                    elevada, com equilíbrio perfeito entre textura, doçura e intensidade.</p>
+            </div>
+            <div class="diferencial-card reveal" style="transition-delay:0.3s">
+                <div class="diferencial-icon">🔒</div>
+                <h3 class="diferencial-titulo">Receita Exclusiva</h3>
+                <p class="diferencial-desc">Desenvolvemos nossas próprias receitas ao longo de anos de pesquisa e
+                    aperfeiçoamento, criando sabores que você não encontra em lugar nenhum.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="galeria" id="galeria">
+        <div class="section-header reveal">
+            <div class="section-label">Galeria</div>
+            <h2 class="section-title">Uma <em>obra de arte</em><br>em cada peça</h2>
+            <div class="divider"></div>
+            <p class="section-sub">Beleza e sabor que encantam os olhos antes mesmo de chegar à boca.</p>
+        </div>
+        <div class="galeria-grid reveal">
+            <div class="gal-item" style="padding:0;overflow:hidden">
+                <img src="img/brigadeiro galeria.png" alt="Brigadeiro Clássico"
+                    style="width:100%;height:100%;object-fit:cover;display:block">
+                <div class="gal-label">Brigadeiro Clássico</div>
+            </div>
+            <div class="gal-item" style="padding:0;overflow:hidden">
+                <img src="img/beijinho galeria.png" alt="Beijinho"
+                    style="width:100%;height:100%;object-fit:cover;display:block">
+                <div class="gal-label">Beijinho</div>
+            </div>
+            <div class="gal-item"><img src="img/kit presente Brigazzi.png" alt="Kit Presente"
+                    style="width:100%;height:100%;object-fit:cover;display:block">
+                <div class="gal-label">Kit Presente</div>
+            </div>
+            <div class="gal-item"><img src="img/edição especial Brigazzi.png" alt="Edição Especial"
+                    style="width:100%;height:100%;object-fit:cover;display:block">
+                <div class="gal-label">Edição Especial</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section class="depoimentos" id="depoimentos">
+        <div class="section-header reveal">
+            <div class="section-label">Depoimentos</div>
+            <h2 class="section-title">O que nossos <em>clientes</em> dizem</h2>
+            <div class="divider"></div>
+            <p class="section-sub">A felicidade dos nossos clientes é nossa maior conquista.</p>
+        </div>
+        <div class="depoimentos-grid">
+            <div class="depo-card reveal">
+                <div class="stars">★★★★★</div>
+                <p class="depo-text">"Os melhores brigadeiros que já provei na minha vida. A textura é perfeita e o
+                    sabor do chocolate é incrível. Já indiquei para toda a família!"</p>
+                <div class="depo-author">
+                    <div class="depo-avatar a1">👩</div>
+                    <div>
+                        <div class="depo-name">Ana Paula Ferreira</div>
+                        <div class="depo-role">Cliente fiel desde 2023</div>
+                    </div>
+                </div>
+            </div>
+            <div class="depo-card reveal" style="transition-delay:0.15s">
+                <div class="stars">★★★★★</div>
+                <p class="depo-text">"Pedi para o aniversário da minha filha e foi um sucesso absoluto. Sabor incrível,
+                    embalagem linda e entrega pontual. Nota 10 em tudo!"</p>
+                <div class="depo-author">
+                    <div class="depo-avatar a2">👨</div>
+                    <div>
+                        <div class="depo-name">Carlos Eduardo Martins</div>
+                        <div class="depo-role">Pai e cliente satisfeito</div>
+                    </div>
+                </div>
+            </div>
+            <div class="depo-card reveal" style="transition-delay:0.3s">
+                <div class="stars">★★★★★</div>
+                <p class="depo-text">"O beijinho gourmet me surpreendeu demais! Nunca imaginei que um brigadeiro poderia
+                    ser tão sofisticado. A Brigazzi é outra categoria!"</p>
+                <div class="depo-author">
+                    <div class="depo-avatar a3">👩</div>
+                    <div>
+                        <div class="depo-name">Fernanda Lima Costa</div>
+                        <div class="depo-role">Apaixonada por confeitaria</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contato" id="contato">
+        <div class="section-header reveal">
+            <div class="section-label">Fale Conosco</div>
+            <h2 class="section-title">Entre em <em>contato</em></h2>
+            <div class="divider"></div>
+            <p class="section-sub">Estamos prontos para atender seu pedido e tornar seu momento ainda mais especial.</p>
+        </div>
+        <div class="contato-inner">
+            <div class="contato-info reveal-left">
+                <div class="contato-item">
+                    <div class="contato-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <div class="contato-item-label">E-mail</div>
+                        <div class="contato-item-val">brigazzibrigadeiros@gmail.com</div>
+                    </div>
+                </div>
+                <div class="contato-item">
+                    <div class="contato-icon"><i class="fas fa-clock"></i></div>
+                    <div>
+                        <div class="contato-item-label">Horário de atendimento</div>
+                        <div class="contato-item-val">Seg a Sex: 9h às 18h<br>Sáb: 9h às 14h</div>
+                    </div>
+                </div>
+            </div>
+            <div class="contato-form reveal-right">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome</label>
+                        <input type="text" placeholder="Seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="tel" placeholder="(00) 00000-0000">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Sabor de interesse</label>
+                    <select>
+                        <option value="">Selecione um sabor</option>
+                        <option>Brigadeiro de Chocolate</option>
+                        <option>Beijinho Gourmet</option>
+                        <option>Quero a caixa com ambos!</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Mensagem</label>
+                    <textarea placeholder="Conte-nos sobre seu pedido ou evento..."></textarea>
+                </div>
+                <button class="form-submit" onclick="handleFormSubmit(this)">
+                    <i class="fas fa-paper-plane" style="margin-right:8px"></i>
+                    Enviar Mensagem
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="nav-logo" style="margin-bottom:16px;display:flex;align-items:center;gap:12px">
+                    <div class="nav-logo-icon"
+                        style="background:linear-gradient(135deg,var(--choco-mid),var(--rose-deep))"><img
+                            src="img/logo da Brigazzi.jpeg" alt="Brigazzi"
+                            style="height:48px;width:auto;border-radius:8px;object-fit:contain;"></div>
+                    <span class="nav-logo-text">BRIGAZZI</span>
+                </div>
+                <p class="footer-tagline">Brigadeiros gourmet artesanais feitos com ingredientes selecionados e muito
+                    carinho. Cada peça é uma obra de arte.</p>
+                <p class="footer-cnpj">CNPJ: 18.733.173/0001-84</p>
+            </div>
+            <div>
+                <div class="footer-col-title">Navegação</div>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre nós</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#diferenciais">Diferenciais</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Redes Sociais</div>
+                <div class="social-row" style="margin-bottom:24px">
+                    <a href="https://www.instagram.com/brigazzi_brigadeiros.013/" class="social-btn"
+                        title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1CKyr8Bt6Z/" class="social-btn" title="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@brigazzi_013?_r=1&_t=ZS-94gnsRvTawk" class="social-btn"
+                        title="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+                <div class="footer-col-title" style="margin-top:8px">Contato</div>
+                <ul class="footer-links">
+                    <li><a href="mailto:brigazzibrigadeiros@gmail.com">brigazzibrigadeiros@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Brigazzi — Todos os direitos reservados.</span>
+            <span>Desenvolvido por Rafinha</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

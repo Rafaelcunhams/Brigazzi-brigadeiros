@@ -1,0 +1,820 @@
+/* ═══════════════════════════════════════════
+   BRIGAZZI — pagamento-cartao.css
+   ═══════════════════════════════════════════ */
+
+:root {
+    --choco-deep: #2C1810;
+    --choco-dark: #4A2820;
+    --choco-mid: #7B3F2D;
+    --choco-light: #C8956C;
+    --rose-deep: #8B4357;
+    --rose-mid: #C4687A;
+    --cream: #FDF6EE;
+    --gold: #C9A96E;
+    --gold-light: #E8D5A3;
+    --text-dark: #1A0F0A;
+    --text-mid: #4A3020;
+    --text-light: #8B6B5A;
+    --white: #FFFFFF;
+    --shadow-warm: rgba(44, 24, 16, 0.15);
+    --error: #E53935;
+    --success: #4CAF50;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--choco-mid);
+    border-radius: 3px;
+}
+
+/* ─── HEADER ─── */
+.page-header {
+    background: var(--choco-deep);
+    padding: 18px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.header-logo img {
+    height: 42px;
+    width: auto;
+    border-radius: 8px;
+}
+
+.header-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+}
+
+.header-center {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: rgba(232, 213, 163, 0.6);
+}
+
+.btn-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: rgba(201, 169, 110, 0.1);
+    border: 1px solid rgba(201, 169, 110, 0.25);
+    border-radius: 8px;
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.btn-voltar:hover {
+    background: rgba(201, 169, 110, 0.2);
+    transform: translateX(-3px);
+}
+
+/* ─── MAIN ─── */
+main {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 44px 5% 80px;
+}
+
+/* ─── STEPS ─── */
+.steps {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(123, 63, 45, 0.15);
+    border: 2px solid rgba(123, 63, 45, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-light);
+    flex-shrink: 0;
+    transition: all 0.4s;
+}
+
+.step.active .step-num {
+    background: linear-gradient(135deg, var(--choco-mid), var(--rose-deep));
+    border-color: transparent;
+    color: var(--gold-light);
+    box-shadow: 0 4px 16px rgba(123, 63, 45, 0.3);
+}
+
+.step.done .step-num {
+    background: linear-gradient(135deg, var(--success), #2E7D32);
+    border-color: transparent;
+    color: white;
+}
+
+.step-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.step.active .step-label {
+    color: var(--choco-mid);
+}
+
+.step-line {
+    flex: 1;
+    height: 2px;
+    background: rgba(123, 63, 45, 0.12);
+    margin: 0 12px;
+    border-radius: 1px;
+}
+
+.step-line.done-line {
+    background: linear-gradient(90deg, var(--success), var(--choco-mid));
+}
+
+/* ─── CREDIT CARD VISUAL ─── */
+.credit-card {
+    width: 100%;
+    max-width: 380px;
+    height: 220px;
+    margin: 0 auto 24px;
+    perspective: 1200px;
+    cursor: pointer;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    padding: 24px 28px;
+    backface-visibility: hidden;
+    transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.card-front {
+    background: linear-gradient(135deg, var(--choco-deep) 0%, #4A2820 50%, var(--choco-mid) 100%);
+    color: white;
+    box-shadow: 0 20px 50px rgba(44, 24, 16, 0.5), inset 0 1px 0 rgba(201, 169, 110, 0.3);
+    transform: rotateY(0deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-front::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: radial-gradient(ellipse at 80% 20%, rgba(201, 169, 110, 0.12) 0%, transparent 60%);
+}
+
+.card-back {
+    background: linear-gradient(135deg, #1A0F0A, var(--choco-dark));
+    transform: rotateY(180deg);
+    box-shadow: 0 20px 50px rgba(44, 24, 16, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.credit-card.flipped .card-front {
+    transform: rotateY(-180deg);
+}
+
+.credit-card.flipped .card-back {
+    transform: rotateY(0deg);
+}
+
+/* Card front elements */
+.card-chip {
+    font-size: 28px;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+}
+
+.card-brand {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.card-number-preview {
+    font-size: 20px;
+    letter-spacing: 3px;
+    font-family: 'DM Sans', monospace;
+    color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    z-index: 1;
+}
+
+.card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 1;
+}
+
+.card-mini-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 4px;
+}
+
+.card-name-preview {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-exp-preview {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Card back elements */
+.card-stripe {
+    height: 44px;
+    background: rgba(0, 0, 0, 0.5);
+    margin: 0 -28px 20px;
+}
+
+.cvv-area {
+    text-align: right;
+    padding-right: 4px;
+}
+
+.cvv-box {
+    display: inline-block;
+    background: white;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--text-dark);
+    font-weight: 700;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* ─── RESUMO MINI ─── */
+.resumo-mini {
+    text-align: center;
+    padding: 18px 24px !important;
+}
+
+.resumo-mini-row {
+    font-size: 14px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.sep {
+    opacity: 0.4;
+}
+
+.resumo-mini-total {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.t-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+}
+
+.t-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--choco-mid);
+}
+
+/* ─── CARD COMUM ─── */
+.cartao-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 4px 24px var(--shadow-warm);
+    margin-bottom: 20px;
+    border: 1px solid rgba(201, 169, 110, 0.08);
+    animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--choco-deep);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.card-title .icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--choco-deep), var(--choco-mid));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--gold-light);
+    box-shadow: 0 4px 12px rgba(44, 24, 16, 0.2);
+}
+
+/* ─── FORM FIELDS ─── */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.input-wrap {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--choco-light);
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 14px 14px 42px;
+    background: rgba(123, 63, 45, 0.04);
+    border: 2px solid rgba(123, 63, 45, 0.12);
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text-dark);
+    outline: none;
+    transition: all 0.3s;
+    letter-spacing: 0.5px;
+}
+
+.form-input::placeholder {
+    color: rgba(139, 107, 90, 0.4);
+    letter-spacing: 0;
+}
+
+.form-input:focus {
+    border-color: var(--choco-mid);
+    background: rgba(123, 63, 45, 0.06);
+    box-shadow: 0 0 0 4px rgba(123, 63, 45, 0.08);
+}
+
+.form-input.valid {
+    border-color: var(--success);
+}
+
+.form-input.invalid {
+    border-color: var(--error);
+}
+
+.card-brand-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+}
+
+.cvv-help {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(123, 63, 45, 0.1);
+    border: 1px solid rgba(123, 63, 45, 0.2);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--choco-mid);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: help;
+}
+
+/* ─── ALERT ─── */
+.form-alert {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    background: rgba(229, 57, 53, 0.08);
+    border: 1px solid rgba(229, 57, 53, 0.25);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--error);
+    margin-bottom: 20px;
+    animation: shake 0.4s ease;
+}
+
+.form-alert.show {
+    display: flex;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0)
+    }
+
+    25% {
+        transform: translateX(-5px)
+    }
+
+    75% {
+        transform: translateX(5px)
+    }
+}
+
+/* ─── BOTÃO PAGAR ─── */
+.btn-pagar {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--choco-deep), var(--choco-mid));
+    color: var(--gold-light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.35s ease;
+    box-shadow: 0 8px 28px rgba(44, 24, 16, 0.3);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.btn-pagar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--rose-deep), var(--choco-mid));
+    opacity: 0;
+    transition: opacity 0.35s;
+}
+
+.btn-pagar:hover::before {
+    opacity: 1;
+}
+
+.btn-pagar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(44, 24, 16, 0.35);
+}
+
+.btn-pagar span,
+.btn-pagar i {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-pagar:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.seguranca {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+}
+
+.seguranca i {
+    color: var(--success);
+}
+
+/* ─── CONFIRMAÇÃO ─── */
+.confirmacao {
+    display: none;
+    text-align: center;
+    animation: fadeUp 0.6s ease both;
+}
+
+.confirmacao.show {
+    display: block;
+}
+
+.confirm-icon-wrap {
+    margin-bottom: 24px;
+}
+
+.confirm-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--success), #2E7D32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 40px;
+    color: white;
+    box-shadow: 0 12px 32px rgba(76, 175, 80, 0.35);
+    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.confirm-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 900;
+    color: var(--choco-deep);
+    margin-bottom: 10px;
+}
+
+.confirm-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--text-light);
+    margin-bottom: 32px;
+    font-weight: 300;
+}
+
+.confirm-code-box {
+    background: linear-gradient(135deg, var(--choco-deep), #3D1A10);
+    border-radius: 20px;
+    padding: 28px;
+    margin: 0 auto 28px;
+    max-width: 340px;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+}
+
+.code-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(201, 169, 110, 0.5);
+    margin-bottom: 10px;
+}
+
+.code-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 4px;
+}
+
+.code-note {
+    font-size: 12px;
+    color: rgba(201, 169, 110, 0.4);
+    margin-top: 12px;
+}
+
+.confirm-details {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 20px var(--shadow-warm);
+    text-align: left;
+}
+
+.cd-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(123, 63, 45, 0.08);
+    font-size: 14px;
+}
+
+.cd-row:last-child {
+    border-bottom: none;
+}
+
+.cd-l {
+    color: var(--text-light);
+}
+
+.cd-v {
+    font-weight: 600;
+    color: var(--choco-deep);
+}
+
+.cd-total {
+    color: var(--choco-mid) !important;
+    font-size: 18px;
+}
+
+.confirm-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-novo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    background: transparent;
+    border: 2px solid rgba(123, 63, 45, 0.25);
+    border-radius: 10px;
+    color: var(--choco-mid);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.btn-novo:hover {
+    background: rgba(123, 63, 45, 0.06);
+    border-color: var(--choco-mid);
+}
+
+.btn-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    background: linear-gradient(135deg, var(--choco-deep), var(--choco-mid));
+    border: none;
+    border-radius: 10px;
+    color: var(--gold-light);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 6px 20px rgba(44, 24, 16, 0.25);
+}
+
+.btn-home:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(44, 24, 16, 0.3);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+    .header-center {
+        display: none;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .credit-card {
+        height: 190px;
+    }
+
+    .card-number-preview {
+        font-size: 16px;
+    }
+
+    .step-label {
+        display: none;
+    }
+}

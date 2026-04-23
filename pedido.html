@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brigazzi — Fazer Pedido</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="pedido.css">
+    <link rel="shortcut icon" href="img/logo da Brigazzi.jpeg" type="image/x-icon">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="page-header">
+        <a href="index.html" class="header-logo">
+            <img src="img/logo da Brigazzi.jpeg" alt="Brigazzi">
+            <span class="header-logo-text">BRIGAZZI</span>
+        </a>
+        <span class="header-center">Finalize seu pedido</span>
+        <a href="index.html" class="btn-voltar">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </a>
+    </header>
+
+    <main>
+
+        <!-- STEPS -->
+        <div class="steps">
+            <div class="step active" id="step1">
+                <div class="step-num">1</div>
+                <div class="step-label">Produto</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" id="step2">
+                <div class="step-num">2</div>
+                <div class="step-label">Tipo</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" id="step3">
+                <div class="step-num">3</div>
+                <div class="step-label">Pagamento</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" id="step4">
+                <div class="step-num">4</div>
+                <div class="step-label">Confirmado</div>
+            </div>
+        </div>
+
+        <!-- FORMULÁRIO -->
+        <div id="orderForm">
+
+            <!-- 1. PRODUTO -->
+            <div class="order-card">
+                <div class="card-title">
+                    <div class="icon">🍫</div>
+                    Escolha o produto
+                </div>
+                <p class="card-sub">Selecione o brigadeiro que deseja pedir</p>
+                <div class="product-grid">
+                    <div class="product-option" onclick="selectProduto(this, 'Brigadeiro de Chocolate', 6.00)">
+                        <span class="product-emoji">🍫</span>
+                        <div class="product-name">Brigadeiro de Chocolate</div>
+                        <div class="product-desc">Chocolate 55% cacau com granulado</div>
+                        <div class="product-price">R$ 6,00</div>
+                    </div>
+                    <div class="product-option" onclick="selectProduto(this, 'Beijinho Gourmet', 6.00)">
+                        <span class="product-emoji">🤍</span>
+                        <div class="product-name">Beijinho Gourmet</div>
+                        <div class="product-desc">Leite de coco selecionado com coco ralado</div>
+                        <div class="product-price">R$ 6,00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. TIPO DE PEDIDO -->
+            <div class="order-card">
+                <div class="card-title">
+                    <div class="icon">🎁</div>
+                    Tipo de pedido
+                </div>
+                <p class="card-sub">Como você quer receber?</p>
+                <div class="type-grid">
+                    <div class="product-option" onclick="selectTipoPedido(this, 'Tradicional', 0.00)">
+                        <span class="product-emoji">🍬</span>
+                        <div class="product-name">Tradicional</div>
+                        <div class="product-desc">Opção simples com embalagem padrão</div>
+                        <div class="product-price">R$ 00,00</div>
+                    </div>
+                    <div class="product-option" onclick="selectTipoPedido(this, 'Kit Presente', 25.00)">
+                        <span class="product-emoji">🎁</span>
+                        <div class="product-name">Kit Presente</div>
+                        <div class="product-desc">Produto maior para presentear alguém especial</div>
+                        <div class="product-price">R$ 25,00</div>
+                    </div>
+                    <div class="product-option" onclick="selectTipoPedido(this, 'Edição Especial', 20.00)">
+                        <span class="product-emoji">✨</span>
+                        <div class="product-name">Edição Especial</div>
+                        <div class="product-desc">Caixa exclusiva com 4 doces gourmet</div>
+                        <div class="product-price">R$ 20,00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. QUANTIDADE -->
+            <div class="order-card">
+                <div class="card-title">
+                    <div class="icon">🔢</div>
+                    Quantidade
+                </div>
+                <p class="card-sub">Quantas unidades deseja?</p>
+                <div class="qty-row">
+                    <div class="qty-control">
+                        <button class="qty-btn" onclick="changeQty(-1)">−</button>
+                        <div class="qty-num" id="qtyDisplay">1</div>
+                        <button class="qty-btn" onclick="changeQty(1)">+</button>
+                    </div>
+                    <div class="qty-info">
+                        <span class="qty-subtotal-label">Subtotal</span>
+                        <span class="qty-subtotal-val" id="subtotalDisplay">R$ 0,00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. PAGAMENTO — apenas seleção visual, sem QR nem formulário -->
+            <div class="order-card">
+                <div class="card-title">
+                    <div class="icon">💳</div>
+                    Forma de pagamento
+                </div>
+                <p class="card-sub">Escolha como quer pagar</p>
+                <div class="payment-grid">
+                    <div class="pay-option" onclick="selectPagamento(this, 'Pix')">
+                        <div class="pay-icon pix"><i class="fa-brands fa-pix"></i></div>
+                        <div>
+                            <div class="pay-name">Pix</div>
+                            <div class="pay-desc">Aprovação instantânea</div>
+                        </div>
+                    </div>
+                    <div class="pay-option" onclick="selectPagamento(this, 'Cartão')">
+                        <div class="pay-icon card"><i class="fa-regular fa-credit-card"></i></div>
+                        <div>
+                            <div class="pay-name">Cartão</div>
+                            <div class="pay-desc">Crédito ou débito</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. ENDEREÇO -->
+            <div class="order-card">
+                <div class="card-title">
+                    <div class="icon">📍</div>
+                    Endereço de entrega
+                </div>
+                <p class="card-sub">Onde devemos entregar seu pedido?</p>
+                <div class="address-form">
+                    <div class="address-field address-field--full">
+                        <label class="address-label">Rua</label>
+                        <input id="addrRua" class="address-input" type="text"
+                               placeholder="Nome da rua ou avenida"
+                               oninput="updateAddress('rua', this.value)">
+                    </div>
+                    <div class="address-field">
+                        <label class="address-label">Número</label>
+                        <input id="addrNumero" class="address-input" type="text"
+                               placeholder="Nº"
+                               oninput="updateAddress('numero', this.value)">
+                    </div>
+                    <div class="address-field">
+                        <label class="address-label">Bairro</label>
+                        <input id="addrBairro" class="address-input" type="text"
+                               placeholder="Bairro"
+                               oninput="updateAddress('bairro', this.value)">
+                    </div>
+                    <div class="address-field address-field--full">
+                        <label class="address-label">Cidade</label>
+                        <input id="addrCidade" class="address-input" type="text"
+                               placeholder="Cidade"
+                               oninput="updateAddress('cidade', this.value)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. ENTREGA -->
+            <div class="order-card">
+                <div class="card-title">
+                    <div class="icon">🚀</div>
+                    Tempo estimado
+                </div>
+                <p class="card-sub">Previsão para o seu pedido</p>
+                <div class="delivery-banner">
+                    <div class="delivery-icon">🛵</div>
+                    <div class="delivery-text">
+                        <div class="label">Entrega estimada</div>
+                        <div class="value">2 a 5 minutos</div>
+                        <div class="note">Após confirmação do pedido</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESUMO -->
+            <div class="summary-card">
+                <div class="summary-title">
+                    <i class="fas fa-receipt" style="color:var(--gold);font-size:16px"></i>
+                    Resumo do pedido
+                </div>
+                <div class="summary-row">
+                    <span class="s-label">Produto</span>
+                    <span class="s-val" id="sumProduto">—</span>
+                </div>
+                <div class="summary-row">
+                    <span class="s-label">Tipo</span>
+                    <span class="s-val" id="sumTipo">—</span>
+                </div>
+                <div class="summary-row">
+                    <span class="s-label">Quantidade</span>
+                    <span class="s-val" id="sumQtd">1 unidade</span>
+                </div>
+                <div class="summary-row">
+                    <span class="s-label">Pagamento</span>
+                    <span class="s-val" id="sumPag">—</span>
+                </div>
+                <div class="summary-row">
+                    <span class="s-label">Endereço</span>
+                    <span class="s-val" id="sumEndereco">—</span>
+                </div>
+                <div class="summary-row">
+                    <span class="s-label">Entrega</span>
+                    <span class="s-val">2–5 min</span>
+                </div>
+                <div class="summary-total">
+                    <span class="t-label">Total</span>
+                    <span class="t-val" id="sumTotal">R$ 0,00</span>
+                </div>
+            </div>
+
+            <!-- ALERT -->
+            <div class="alert" id="alertBox">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="alertMsg">Por favor, preencha todos os campos antes de continuar.</span>
+            </div>
+
+            <!-- FINALIZAR -->
+            <button class="btn-finalizar" onclick="finalizarPedido()">
+                <i class="fas fa-check-circle"></i>
+                <span>Finalizar Pedido</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+
+        </div><!-- /orderForm -->        
+
+    </main>
+
+    <script src="pedido.js"></script>
+</body>
+
+</html>

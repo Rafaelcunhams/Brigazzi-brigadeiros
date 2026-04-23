@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brigazzi — Pagamento Pix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="shortcut icon" href="img/logo da Brigazzi.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="pagamento-pix.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="page-header">
+        <a href="index.html" class="header-logo">
+            <img src="img/logo da Brigazzi.jpeg" alt="Brigazzi">
+            <span class="header-logo-text">BRIGAZZI</span>
+        </a>
+        <span class="header-center">Pagamento via Pix</span>
+        <a href="pedido.html" class="btn-voltar">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </a>
+    </header>
+
+    <main>
+
+        <!-- STEPS -->
+        <div class="steps">
+            <div class="step done">
+                <div class="step-num"><i class="fas fa-check"></i></div>
+                <div class="step-label">Pedido</div>
+            </div>
+            <div class="step-line done-line"></div>
+            <div class="step active">
+                <div class="step-num">2</div>
+                <div class="step-label">Pagamento</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" id="stepConfirm">
+                <div class="step-num">3</div>
+                <div class="step-label">Confirmado</div>
+            </div>
+        </div>
+
+        <!-- PAINEL PRINCIPAL -->
+        <div id="painelPix">
+
+            <!-- RESUMO DO PEDIDO -->
+            <div class="pix-card resumo-card">
+                <div class="card-title">
+                    <div class="icon"><i class="fas fa-receipt"></i></div>
+                    Resumo do pedido
+                </div>
+                <div class="resumo-grid">
+                    <div class="resumo-item">
+                        <span class="r-label">Produto</span>
+                        <span class="r-val" id="rProduto">—</span>
+                    </div>
+                    <div class="resumo-item">
+                        <span class="r-label">Tipo</span>
+                        <span class="r-val" id="rTipo">—</span>
+                    </div>
+                    <div class="resumo-item">
+                        <span class="r-label">Quantidade</span>
+                        <span class="r-val" id="rQtd">—</span>
+                    </div>
+                    <div class="resumo-item">
+                        <span class="r-label">Código</span>
+                        <span class="r-val r-codigo" id="rCodigo">—</span>
+                    </div>
+                </div>
+                <div class="resumo-total">
+                    <span class="t-label">Total a pagar</span>
+                    <span class="t-val" id="rTotal">—</span>
+                </div>
+            </div>
+
+            <!-- QR CODE -->
+            <div class="pix-card qr-card">
+                <div class="card-title">
+                    <div class="icon pix-icon"><i class="fa-brands fa-pix"></i></div>
+                    Escaneie para pagar
+                </div>
+
+                <div class="qr-wrapper">
+                    <div class="qr-border">
+                        <div class="qr-corner tl"></div>
+                        <div class="qr-corner tr"></div>
+                        <div class="qr-corner bl"></div>
+                        <div class="qr-corner br"></div>
+                        <img id="qrImg" src="" alt="QR Code Pix" class="qr-img">
+                    </div>
+                    <div class="qr-pulse"></div>
+                </div>
+
+                <div class="pix-instrucoes">
+                    <div class="pix-step-item"><span class="ps-num">1</span><span>Abra o app do seu banco</span></div>
+                    <div class="pix-step-item"><span class="ps-num">2</span><span>Acesse a área
+                            <strong>Pix</strong></span></div>
+                    <div class="pix-step-item"><span class="ps-num">3</span><span>Selecione <strong>Ler QR
+                                Code</strong></span></div>
+                    <div class="pix-step-item"><span class="ps-num">4</span><span>Aponte a câmera e confirme</span>
+                    </div>
+                </div>
+
+                <!-- TIMER -->
+                <div class="timer-box">
+                    <i class="fas fa-clock"></i>
+                    <span>QR Code válido por </span>
+                    <span id="timer" class="timer-val">05:00</span>
+                </div>
+
+                <!-- BOTÃO CONFIRMAR -->
+                <button class="btn-ja-paguei" id="btnConfirmar" onclick="confirmarPix()">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Já realizei o pagamento</span>
+                </button>
+            </div>
+
+        </div><!-- /painelPix -->
+
+        <!-- TELA DE CONFIRMAÇÃO -->
+        <div class="confirmacao" id="confirmacao">
+            <div class="confirm-icon-wrap">
+                <div class="confirm-circle">
+                    <i class="fas fa-check"></i>
+                </div>
+            </div>
+            <h2 class="confirm-title">Pagamento confirmado!</h2>
+            <p class="confirm-sub">Seu brigadeiro está sendo preparado com muito carinho 🍫</p>
+
+            <div class="confirm-code-box">
+                <div class="code-label">Código do pedido</div>
+                <div class="code-value" id="confCodigo">BRG-0000</div>
+                <div class="code-note"><i class="fas fa-mobile-alt"></i> Apresente este código na entrega</div>
+            </div>
+
+            <div class="confirm-details">
+                <div class="cd-row"><span class="cd-l">Produto</span><span class="cd-v" id="cdProduto">—</span></div>
+                <div class="cd-row"><span class="cd-l">Tipo</span><span class="cd-v" id="cdTipo">—</span></div>
+                <div class="cd-row"><span class="cd-l">Quantidade</span><span class="cd-v" id="cdQtd">—</span></div>
+                <div class="cd-row"><span class="cd-l">Pagamento</span><span class="cd-v">Pix </span></div>
+                <div class="cd-row"><span class="cd-l">Entrega estimada</span><span class="cd-v">2 a 5 minutos</span>
+                </div>
+                <div class="cd-row"><span class="cd-l">Total pago</span><span class="cd-v cd-total"
+                        id="cdTotal">—</span></div>
+            </div>
+
+            <div class="confirm-actions">
+                <a href="pedido.html" class="btn-novo">
+                    <i class="fas fa-redo"></i> Novo pedido
+                </a>
+                <a href="index.html" class="btn-home">
+                    <i class="fas fa-home"></i> Início
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="pagamento-pix.js"></script>
+</body>
+
+</html>
